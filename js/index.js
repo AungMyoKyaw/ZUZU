@@ -596,11 +596,23 @@ $(document).ready(function() {
 
     }
     $("p#amk").hide();
+
+    function cleartextbox() {
+        chrome.storage.sync.set({ "textbox": "" });
+    }
+    chrome.storage.sync.get("textbox", function(a) {
+        $("#zg_uni-conv").val(a.textbox);
+    });
+    $("#zg_uni-conv").keyup(function(e) {
+        chrome.storage.sync.set({ "textbox": $(this).val() });
+    });
+
     function copytext() {
         var copynow = new Clipboard('.btn');
         copynow.on('success', function(e) {
             e.clearSelection();
             $("p#amk").show();
+            cleartextbox();
 
             function amk() {
                 setTimeout(function() {
@@ -629,10 +641,10 @@ $(document).ready(function() {
             var iszawgyi = Zawgyi.test($("#zg_uni-conv").val());
             if (iszawgyi === true) {
                 //console.log("is zg");
-                $("#zg_uni-conv").val($("#zg_uni-conv").val() + "\n" + zg2uni($("#zg_uni-conv").val()));
+                $("#zg_uni-conv").val("[Zawgyi]" + "\n" + $("#zg_uni-conv").val() + "\n\n" + "[Unicode]" + "\n" + zg2uni($("#zg_uni-conv").val()));
                 copytext();
             } else {
-                $("#zg_uni-conv").val($("#zg_uni-conv").val() + "\n" + uni2zg($("#zg_uni-conv").val()));
+                $("#zg_uni-conv").val("[Unicode]" + "\n" + $("#zg_uni-conv").val() + "\n\n" + "[Zawgyi]" + "\n" + uni2zg($("#zg_uni-conv").val()));
                 copytext();
             }
         }

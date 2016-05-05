@@ -596,37 +596,44 @@ $(document).ready(function() {
 
     }
     $("p#amk").hide();
+    function copytext() {
+        var copynow = new Clipboard('.btn');
+        copynow.on('success', function(e) {
+            e.clearSelection();
+            $("p#amk").show();
+
+            function amk() {
+                setTimeout(function() {
+                    $("p#amk").hide();
+                }, 3000);
+            }
+            amk();
+            clearTimeout(amk());
+        });
+    }
     $("#zg_uni-conv-but").click(function() {
         if ($("#zg_uni-conv").val() !== "") {
             var iszawgyi = Zawgyi.test($("#zg_uni-conv").val());
-            var clipboard = new Clipboard('#zg_uni-conv-but', {
-                target: function() {
-                    return document.querySelector('#zg_uni-conv');
-                }
-            });
             if (iszawgyi === true) {
                 //console.log("is zg");
                 $("#zg_uni-conv").val(zg2uni($("#zg_uni-conv").val()));
-                $("p#amk").show();
-
-                function amk() {
-                    setTimeout(function() {
-                        $("p#amk").hide();
-                    }, 3000);
-                }
-                amk();
-                clearTimeout(amk());
+                copytext();
             } else {
                 $("#zg_uni-conv").val(uni2zg($("#zg_uni-conv").val()));
-                $("p#amk").show();
-
-                function amk() {
-                    setTimeout(function() {
-                        $("p#amk").hide();
-                    }, 3000);
-                }
-                amk();
-                clearTimeout(amk());
+                copytext();
+            }
+        }
+    });
+    $("#magic").click(function() {
+        if ($("#zg_uni-conv").val() !== "") {
+            var iszawgyi = Zawgyi.test($("#zg_uni-conv").val());
+            if (iszawgyi === true) {
+                //console.log("is zg");
+                $("#zg_uni-conv").val($("#zg_uni-conv").val() + "\n" + zg2uni($("#zg_uni-conv").val()));
+                copytext();
+            } else {
+                $("#zg_uni-conv").val($("#zg_uni-conv").val() + "\n" + uni2zg($("#zg_uni-conv").val()));
+                copytext();
             }
         }
     });

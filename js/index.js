@@ -603,8 +603,8 @@ $(document).ready(function() {
     chrome.storage.sync.get("textbox", function(a) {
         $("#zg_uni-conv").val(a.textbox);
     });
-    $("#zg_uni-conv").keyup(function(e) {
-        chrome.storage.sync.set({ "textbox": $(this).val() });
+    $("#zg_uni-conv").keyup(function() {
+            chrome.storage.sync.set({ "textbox": $(this).val() });
     });
 
     function copytext() {
@@ -613,7 +613,6 @@ $(document).ready(function() {
             e.clearSelection();
             $("p#amk").show();
             cleartextbox();
-
             function amk() {
                 setTimeout(function() {
                     $("p#amk").hide();

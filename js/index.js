@@ -603,8 +603,8 @@ $(document).ready(function() {
     chrome.storage.sync.get("textbox", function(a) {
         $("#zg_uni-conv").val(a.textbox);
     });
-    $("#zg_uni-conv").keyup(function() {
-            chrome.storage.sync.set({ "textbox": $(this).val() });
+    $("#zg_uni-conv").keypress(function(e) {
+            chrome.storage.sync.set({ "textbox": $(this).val()+String.fromCharCode(e.which)});
     });
 
     function copytext() {

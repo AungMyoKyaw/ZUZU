@@ -608,6 +608,11 @@ $(document).ready(function() {
     });
     chrome.storage.sync.get("zfirst",function(a){
         iszfirston=a.zfirst;
+        if(iszfirston===true){
+            $("#zuzu").html("Zg<=>Uni");
+        } else {
+            $("#zuzu").html("Uni<=>Zg");
+        }
     });
     function copytext() {
         var copynow = new Clipboard('.btn');
@@ -652,5 +657,18 @@ $(document).ready(function() {
                 copytext();
             }
         }
+    });
+    $("#zuzu").click(function() {
+        chrome.storage.sync.get("zfirst",function(a){
+            if(a.zfirst===true){
+                chrome.storage.sync.set({"zfirst":false},function(){
+                    $("#zuzu").html("Uni<=>Zg");
+                });
+            } else {
+                chrome.storage.sync.set({"zfirst":true},function(){
+                    $("#zuzu").html("Zg<=>Uni");
+                });
+            }
+        });
     });
 });

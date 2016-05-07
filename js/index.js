@@ -662,10 +662,12 @@ $(document).ready(function() {
         chrome.storage.sync.get("zfirst",function(a){
             if(a.zfirst===true){
                 chrome.storage.sync.set({"zfirst":false},function(){
+                    iszfirston=false;
                     $("#zuzu").html("Uni<=>Zg");
                 });
             } else {
                 chrome.storage.sync.set({"zfirst":true},function(){
+                    iszfirston=true;
                     $("#zuzu").html("Zg<=>Uni");
                 });
             }

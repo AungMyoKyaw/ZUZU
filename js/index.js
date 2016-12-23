@@ -610,6 +610,7 @@ $(document).ready(function() {
             amk();
             clearTimeout(amk());
         });
+        window.close();
     }
     //zuuz
     function zuzu() {
@@ -651,13 +652,13 @@ $(document).ready(function() {
         $("#zg_uni-conv").val(a.textbox);
     });
     $("#zg_uni-conv").keypress(function(e) {
-        if(e.which==3){
-            zuzu();
-            cleartextbox();
-            window.close();
-        } else {
+        // if(e.which==3){
+            // zuzu();
+            // cleartextbox();
+            // window.close();
+        // } else {
             chrome.storage.sync.set({ "textbox": $(this).val()+String.fromCharCode(e.which)});
-        }
+        // }
     });
     chrome.storage.sync.get("zfirst",function(a){
         iszfirston=a.zfirst;

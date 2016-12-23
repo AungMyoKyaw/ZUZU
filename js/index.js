@@ -595,25 +595,7 @@ $(document).ready(function() {
         return output;
 
     }
-    $("p#amk").hide();
-    var iszfirston=false;
-    function cleartextbox() {
-        chrome.storage.sync.set({ "textbox": "" });
-    }
-    chrome.storage.sync.get("textbox", function(a) {
-        $("#zg_uni-conv").val(a.textbox);
-    });
-    $("#zg_uni-conv").keypress(function(e) {
-        chrome.storage.sync.set({ "textbox": $(this).val()+String.fromCharCode(e.which)});
-    });
-    chrome.storage.sync.get("zfirst",function(a){
-        iszfirston=a.zfirst;
-        if(iszfirston===true){
-            $("#zuzu").html("Zg<=>Uni");
-        } else {
-            $("#zuzu").html("Uni<=>Zg");
-        }
-    });
+    //copy text
     function copytext() {
         var copynow = new Clipboard('.btn');
         copynow.on('success', function(e) {
@@ -629,7 +611,8 @@ $(document).ready(function() {
             clearTimeout(amk());
         });
     }
-    $("#zg_uni-conv-but").click(function() {
+    //zuuz
+    function zuzu() {
         if ($("#zg_uni-conv").val() !== "") {
             var iszawgyi = Zawgyi.test($("#zg_uni-conv").val());
             if (iszawgyi === true) {
@@ -641,8 +624,9 @@ $(document).ready(function() {
                 copytext();
             }
         }
-    });
-    $("#magic").click(function() {
+    }
+    //magic
+    function magic() {
         if ($("#zg_uni-conv").val() !== "") {
             var iszawgyi = Zawgyi.test($("#zg_uni-conv").val());
             if (iszawgyi === true) {
@@ -657,7 +641,34 @@ $(document).ready(function() {
                 copytext();
             }
         }
+    }
+    $("p#amk").hide();
+    var iszfirston=false;
+    function cleartextbox() {
+        chrome.storage.sync.set({ "textbox": "" });
+    }
+    chrome.storage.sync.get("textbox", function(a) {
+        $("#zg_uni-conv").val(a.textbox);
     });
+    $("#zg_uni-conv").keypress(function(e) {
+        if(e.which==3){
+            zuzu();
+            cleartextbox();
+            window.close();
+        } else {
+            chrome.storage.sync.set({ "textbox": $(this).val()+String.fromCharCode(e.which)});
+        }
+    });
+    chrome.storage.sync.get("zfirst",function(a){
+        iszfirston=a.zfirst;
+        if(iszfirston===true){
+            $("#zuzu").html("Zg<=>Uni");
+        } else {
+            $("#zuzu").html("Uni<=>Zg");
+        }
+    });
+    $("#zg_uni-conv-but").click(()=>zuzu());
+    $("#magic").click(()=>magic());
     $("#zuzu").click(function() {
         chrome.storage.sync.get("zfirst",function(a){
             if(a.zfirst===true){

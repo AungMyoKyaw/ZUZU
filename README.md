@@ -5,7 +5,7 @@ http://zuzu.aungmyokyaw.com
 - Ko San Lin Naing (Zawgyi Regular Expression)
 
 ## install လုပ္နည္း	[Zawgyi]
-1. https://github.com/AungMyoKyaw/ZUZU/releases တြင္ ေနာက္ ဆုံးထြက္ေတာ့ ဗားရွင္း ၏ crx ဖိုင္ကို Download ယူပါ။
+1. https://github.com/AungMyoKyaw/ZUZU/releases/latest တြင္ ေနာက္ ဆုံးထြက္ေတာ့ ဗားရွင္း ၏ crx ဖိုင္ကို Download ယူပါ။
 2. [chrome://extensions/](chrome://extensions/) ကိုသြားပါ။
 3. Download ဆြဲထားတဲ့ crx ဖိုင္ကို chrome://extensions/ ထဲ့ကို Drag ဆြဲထည့္ပါ။
 
@@ -19,7 +19,7 @@ http://zuzu.aungmyokyaw.com
 - zg first on off
 
 ## install လုပ်နည်း	[Unicode]
-1. https://github.com/AungMyoKyaw/ZUZU/releases တွင် နောက် ဆုံးထွက်တော့ ဗားရှင်း ၏ crx ဖိုင်ကို Download ယူပါ။
+1. https://github.com/AungMyoKyaw/ZUZU/releases/latest တွင် နောက် ဆုံးထွက်တော့ ဗားရှင်း ၏ crx ဖိုင်ကို Download ယူပါ။
 2. [chrome://extensions/](chrome://extensions/) ကိုသွားပါ။
 3. Download ဆွဲထားတဲ့ crx ဖိုင်ကို chrome://extensions/ ထဲ့ကို Drag ဆွဲထည့်ပါ။
 

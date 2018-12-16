@@ -1,25 +1,23 @@
 {
-    "manifest_version": 2,
+  "manifest_version": 2,
 
-    "name": "ZUZU",
-    "description": "ZG<=>UNI for all",
-    "version": "1.211",
-    "icons": {
-        "16": "icon16.png",
-        "48": "icon48.png",
-        "128": "icon128.png"
+  "name": "ZUZU",
+  "description": "ZG<=>UNI for all",
+  "version": "1.211",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
     },
-    "browser_action": {
-        "default_icon": {
-            "16": "icon16.png",
-            "48": "icon48.png",
-            "128": "icon128.png"
-        },
-        "default_title": "ZUZU",
-        "default_popup": "index.html"
-    },
-    "permissions": [
-        "storage"
-    ],
-    "options_page": "options.html"
+    "default_title": "ZUZU",
+    "default_popup": "index.html"
+  },
+  "permissions": ["storage"],
+  "options_page": "options.html"
 }
